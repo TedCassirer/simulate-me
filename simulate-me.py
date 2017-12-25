@@ -22,15 +22,15 @@ class Simulator(object):
     def watch_subreddit(self, sr):
         start = time()
         subreddit = self.reddit.subreddit(sr)
-
         comment_stream = subreddit.stream.comments()
         for comment in comment_stream:
             if comment.created_utc > start:
                 self.process_comment(comment)
 
     def process_comment(self, comment):
-        if comment.author != self.reddit.user and comment.body == "!simulate_me":
-            print("Generating corpus for user {}...".format(comment.author.name))
+        if comment.author != self.reddit.user and comment.body == config.bot_call:
+            print(
+                "Generating corpus for user {}...".format(comment.author.name))
             corpus = self.get_corpus(comment.author.name)
             print("Generates sentences...")
             reply = self.generate_sentences(corpus, 5)

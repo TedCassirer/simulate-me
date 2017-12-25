@@ -10,7 +10,7 @@ bot_username = 'botty'
 bot_password = 'passy'
 
 user_agent = '/u/user_sim_bot'
-
+bot_call = '!simulate-me'
 
 
 scopes = ['creddits', 'edit', 'flair', 'history', 'identity', 'modconfig',
